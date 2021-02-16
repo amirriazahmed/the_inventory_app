@@ -4,7 +4,7 @@ var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const path = require('path');
+
 
 // IMPORT ROUTES
 var auth = require('./routes/auth');
@@ -57,7 +57,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(auth.passport.initialize());
 app.use(auth.passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(path.join(__dirname, '../client/build')));
 // app.use(authenticationMiddleware(allowUrl));
 
 function ensureAuthenticated(req, res, next) {
