@@ -4,6 +4,7 @@ var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const path = require('path');
 
 // IMPORT ROUTES
 var auth = require('./routes/auth');
@@ -21,7 +22,7 @@ const url =
   `mongodb+srv://${mongoUser}:${mongoPasswd}` +
   `@${mongoServer}/${mongoDBName}?retryWrites=true&w=majority`;
 
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI || url, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.once('open', (_) =>
   console.log('MongoDB is now connected:', `${mongoUser}@${mongoServer}/${mongoDBName}`)
@@ -96,5 +97,13 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'client','build', 'index.html')); //relative path
+    });
+}
 
 module.exports = app;
