@@ -10,15 +10,15 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Box,
 } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
-import TablePagination from '@material-ui/core/TablePagination';
+import TablePagination from "@material-ui/core/TablePagination";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    display: 'block',
-    marginTop: theme.spacing(2),
+    display: "block",
   },
   formControl: {
     margin: theme.spacing(1),
@@ -53,7 +53,6 @@ const Search = () => {
   };
 
   const performSearch = () => {
-
     const bodyValues = {};
     bodyValues.search = {};
     if (prodId !== "") {
@@ -78,7 +77,6 @@ const Search = () => {
     bodyValues.page = page;
     bodyValues.limit = limit;
 
-
     const postOptions = {
       method: "POST",
       headers: {
@@ -93,7 +91,6 @@ const Search = () => {
         console.log(data);
         setSearchData(data);
       });
-
   };
 
   useEffect(() => {
@@ -101,17 +98,16 @@ const Search = () => {
       performSearch();
       setDoSearch(false);
     }
-
-  }, [doSearch])
+  }, [doSearch]);
 
   return (
-    <div style={{ margin: 5 }}>
+    <div style={{ margin: 15 }} >
       <Grid
         container
-        direction="column"
+        direction="row"
         justify="space-around"
         spacing={1}
-        alignItems="flex-start"
+        // alignItems="flex-start"
       >
         <Grid item>
           <TextField
@@ -121,7 +117,6 @@ const Search = () => {
             onChange={(event) => setprodID(event.target.value)}
           />
         </Grid>
-
         <Grid item>
           <TextField
             id="Name"
@@ -130,7 +125,6 @@ const Search = () => {
             onChange={(event) => setprodName(event.target.value)}
           />
         </Grid>
-
         <Grid item>
           <TextField
             id="Brand"
@@ -163,11 +157,13 @@ const Search = () => {
             onChange={(event) => setprodQuantity(event.target.value)}
           />
         </Grid>
-
-        <Button variant="contained" color="primary" onClick={performSearch} >
-          Search
-        </Button>
-
+        <Grid container justify="flex-end">
+          <Box pr={6} py={1}>
+            <Button variant="contained" color="primary" onClick={performSearch}>
+              Search
+            </Button>
+          </Box>
+        </Grid>
       </Grid>
 
       <Grid>
@@ -177,24 +173,40 @@ const Search = () => {
           count={100}
           rowsPerPage={limit}
           page={page}
-
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChange}
         />
-
       </Grid>
 
-      <TableContainer style={{ marginTop: 20 }} component={Paper} >
-        <Table aria-label='simple table'>
+      <TableContainer style={{ marginTop: 20 }} component={Paper}
+      style={{
+        width: "auto",
+        margin: "10px",
+        boxShadow: "0 3px 5px 2px rgba(60, 60, 200, .5)",
+      }}
+>
+
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell className={classes.headerCell}><h4>Product ID</h4></TableCell>
-              <TableCell className={classes.headerCell}><h4>Product Name</h4></TableCell>
-              <TableCell className={classes.headerCell}><h4>Brand</h4></TableCell>
-              <TableCell className={classes.headerCell}><h4>Supplier</h4></TableCell>
-              <TableCell className={classes.headerCell}><h4>Category</h4></TableCell>
-              <TableCell className={classes.headerCell}><h4>Quantity</h4></TableCell>
-
+              <TableCell className={classes.headerCell}>
+                <h4>Product ID</h4>
+              </TableCell>
+              <TableCell className={classes.headerCell}>
+                <h4>Product Name</h4>
+              </TableCell>
+              <TableCell className={classes.headerCell}>
+                <h4>Brand</h4>
+              </TableCell>
+              <TableCell className={classes.headerCell}>
+                <h4>Supplier</h4>
+              </TableCell>
+              <TableCell className={classes.headerCell}>
+                <h4>Category</h4>
+              </TableCell>
+              <TableCell className={classes.headerCell}>
+                <h4>Quantity</h4>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -207,13 +219,10 @@ const Search = () => {
                 <TableCell>{row.category}</TableCell>
                 <TableCell>{row.quantity}</TableCell>
               </TableRow>
-
             ))}
-
           </TableBody>
         </Table>
       </TableContainer>
-
     </div>
   );
 };
