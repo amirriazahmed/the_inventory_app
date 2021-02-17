@@ -9,7 +9,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AddProductPage from "./pages/AddProductPage";
 import ProductsTable from "./pages/ProductsTable";
-import Quantity from "./pages/Quantity";
+// import Quantity from "./pages/Quantity";
 import Footer from "./components/Footer";
 import DeleteProductPage from "./pages/DeleteProductPage";
 import LoginPage from "./pages/LoginPage";
@@ -80,11 +80,11 @@ export default function App() {
                 />
               )}
             />
-            <Route
+            {/* <Route
               exact
               path="/Quantity"
               render={(props) => <Quantity {...props} />}
-            />
+            /> */}
             <Route
               exact
               path="/DeleteProductPage"

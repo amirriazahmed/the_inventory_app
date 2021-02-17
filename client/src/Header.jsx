@@ -95,10 +95,10 @@ const Header = props => {
       menuTitle: "update Quantity",
       pageURL: "/updateQTY1"
   },
-  {
-    menuTitle: "Quantity",
-    pageURL: "/quantity"
-},
+//   {
+//     menuTitle: "Quantity",
+//     pageURL: "/quantity"
+// },
 {
     menuTitle: "Delete",
     pageURL: "/deleteproductpage"
@@ -184,14 +184,14 @@ const Header = props => {
                 variant="contained"
                 onClick={() => handleButtonClick("/updateQTY1")}
               >
-                uPDATE qUANTITY
+                UPDATE QUANTITY
               </Button>
-              <Button
+              {/* <Button
                 variant="contained"
                 onClick={() => handleButtonClick("/quantity")}
               >
                 QUANTITY 
-              </Button>
+              </Button> */}
               <Button
                 variant="contained"
                 onClick={() => handleButtonClick("/deleteproductpage")}

@@ -101,7 +101,7 @@ const Search = () => {
   }, [doSearch]);
 
   return (
-    <div style={{ margin: 15 }} >
+    <div style={{ margin: 15 }}>
       <Grid
         container
         direction="row"
@@ -178,14 +178,15 @@ const Search = () => {
         />
       </Grid>
 
-      <TableContainer style={{ marginTop: 20 }} component={Paper}
-      style={{
-        width: "auto",
-        margin: "10px",
-        boxShadow: "0 3px 5px 2px rgba(60, 60, 200, .5)",
-      }}
->
-
+      <TableContainer
+        style={{ marginTop: 20 }}
+        component={Paper}
+        style={{
+          width: "auto",
+          margin: "10px",
+          boxShadow: "0 3px 5px 2px rgba(60, 60, 200, .5)",
+        }}
+      >
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>

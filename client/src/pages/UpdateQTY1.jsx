@@ -13,8 +13,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { Formik, Form, Field } from "formik";
-// import { TextField } from 'formik-material-ui';
+import { Formik, Form } from "formik";
 import * as yup from "yup";
 
 const useStyles = makeStyles({
@@ -23,8 +22,6 @@ const useStyles = makeStyles({
     fontWeight: "bold",
   },
 });
-
-
 
 const ChangeQuantity = () => {
   const classes = useStyles();
@@ -37,14 +34,10 @@ const ChangeQuantity = () => {
     quantity: "",
   });
   const [prodId, setprodID] = useState("");
-  
   const [selectedOption, setSelectedOption] = useState();
   const [prodQuantity, setprodQuantity] = useState("");
   const [receiving, setReceiving] = useState("");
   const [issuing, setIssuing] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [formikKey, setFormikKey] = useState(0);
-
   const [buttonPressed, setButtonPressed] = useState("");
 
   const validationQuantitySchema = yup.object({
@@ -64,41 +57,11 @@ const ChangeQuantity = () => {
       .typeError("Must be a number not letters")
       .integer("Must enter a whole number")
       .moreThan(0, "Must enter whole numbers greater than zero")
-      .lessThan(prodQuantity ,'Must be less than or equal the Quantity onStock')
+      .lessThan(
+        prodQuantity,
+        "Must be less than or equal the Quantity onStock"
+      ),
   });
-  /* const changeQtyofItem = () => {
-    const body = {};
-      body.id = prodId;
-      body.quantity = prodQuantity;
-    
-    const updateQuantity = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    };
-
-    fetch("/product/changequantity", updateQuantity)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.id) {
-          setCurrentProduct(data);
-        }
-        
-      })
-      .catch(err => {
-        console.log('catch error message',err)
-      });
-
-  } */
-
-  const keyPressHandler = (event) => {
-    if (event.key === "Enter") {
-      setTimeout(performSearch, 5000);
-    }
-  };
 
   const performSearch = (internalId) => {
     const body = {};
@@ -116,7 +79,6 @@ const ChangeQuantity = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // setSearchData(data);
         setCurrentProduct(data[0]);
         setprodQuantity(data[0].quantity + 1);
       });
@@ -125,8 +87,6 @@ const ChangeQuantity = () => {
   let options = ["Receiving", "Issuing"];
   const receiveOrIssueItem = (inventoryIn, inventoryOut) => {
     const body = {};
-    //   body.id = prodId;
-    //   body.quantity = prodQuantity;
     body.updateQuantityBy = 0;
     if (inventoryIn !== "") {
       body.updateQuantityBy = parseInt(inventoryIn) + body.updateQuantityBy;
@@ -135,17 +95,6 @@ const ChangeQuantity = () => {
       body.updateQuantityBy =
         parseInt(inventoryOut) * -1 + body.updateQuantityBy;
     }
-
-    /* yup.object({Issuing: yup.number('must enter a number')
-            .lessThan(body.quantity,'Must be less than available quantity')
-        )} */
-    /*  if (parseInt(inventoryOut) > (body.quantity)) {
-          console.log(inventoryOut,body.quantity);
-                
-          <div>
-            <h1> The required Quantity is not available on stock</h1>;
-          </div>}
-       */
 
     const updateQuantity = {
       method: "PATCH",
@@ -171,7 +120,6 @@ const ChangeQuantity = () => {
 
   return (
     <Formik
-      // key = {formikKey}
       enableReinitialize={true}
       validationSchema={validationQuantitySchema}
       onSubmit={(values, formikBag) => {
@@ -181,7 +129,6 @@ const ChangeQuantity = () => {
           console.log("hi");
           performSearch(values.CompanyIdInput);
         } else {
-          // this.resetParkingLot();
           receiveOrIssueItem(values.Receiving, values.Issuing);
           setFieldValue("Receiving", "");
           setFieldValue("Issuing", "");
@@ -203,10 +150,7 @@ const ChangeQuantity = () => {
         isValid,
         errors,
       }) => (
-        <Form
-          // noValidate
-          onSubmit={handleSubmit}
-        >
+        <Form onSubmit={handleSubmit}>
           <div style={{ margin: 5 }}>
             <center>
               <h1> Make your selection for Quantity update</h1>
@@ -233,13 +177,10 @@ const ChangeQuantity = () => {
               alignItems="flex-start"
             >
               <Grid item xs={12}>
-                
                 <TextField
                   id="CompanyIdInput"
                   label="Internal ID"
                   variant="outlined"
-                  // onChange={(event) => setprodID(event.target.value)}
-                  // onKeyPress={keyPressHandler}
                   value={values.CompanyIdInput}
                   onBlur={handleBlur}
                   onChange={(event) => {
@@ -252,7 +193,6 @@ const ChangeQuantity = () => {
               <Button
                 variant="contained"
                 color="primary"
-                // onClick={performSearch}
                 onClick={(e) => {
                   setButtonPressed("search");
 
@@ -262,7 +202,6 @@ const ChangeQuantity = () => {
               >
                 Enter Confirm Product
               </Button>
-              
 
               <TableContainer style={{ marginTop: 20 }} component={Paper}>
                 <Table aria-label="simple table">
@@ -297,22 +236,9 @@ const ChangeQuantity = () => {
                       <TableCell>{currentProduct.category}</TableCell>
                       <TableCell>{currentProduct.quantity}</TableCell>
                     </TableRow>
-                    {/* ))} */}
                   </TableBody>
                 </Table>
               </TableContainer>
-              {/* <Grid item>
-            <TextField
-              id="Quantity"
-              label="Quantity"
-              variant="outlined"
-              onChange={(event) => setprodQuantity(event.target.value)}
-            />
-          </Grid>
-
-          <Button variant="contained" color="primary" onClick={changeQtyofItem}>
-            Change Quantity
-          </Button> */}
               {isReceiving ? (
                 <div>
                   <br></br>
@@ -323,7 +249,6 @@ const ChangeQuantity = () => {
                         label="Receiving"
                         variant="outlined"
                         color="primary"
-                        // onChange={(event) => setReceiving(event.target.value)}
                         value={values.Receiving}
                         onBlur={handleBlur}
                         onChange={(event) => {
@@ -338,10 +263,8 @@ const ChangeQuantity = () => {
                     <Button
                       variant="contained"
                       color="primary"
-                      // onClick={receiveOrIssueItem}
                       onClick={(e) => {
                         setButtonPressed("updateValueQty");
-
                         handleSubmit(e);
                       }}
                       disabled={
@@ -364,7 +287,6 @@ const ChangeQuantity = () => {
                         label="Issuing"
                         variant="outlined"
                         color="primary"
-                        // onChange={(event) => setIssuing(event.target.value)}
                         value={values.Issuing}
                         onBlur={handleBlur}
                         onChange={(event) => {
@@ -379,10 +301,8 @@ const ChangeQuantity = () => {
                     <Button
                       variant="contained"
                       color="primary"
-                      // onClick={receiveOrIssueItem}
                       onClick={(e) => {
                         setButtonPressed("updateValueQty");
-
                         handleSubmit(e);
                       }}
                       disabled={
