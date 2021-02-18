@@ -2,12 +2,23 @@ import React from "react";
 import Footer from "../components/Footer"
 import Image from "../img/5.jpg";
 import { makeStyles } from "@material-ui/core/styles";
+import {
+  
+  Snackbar,
+ 
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 
 }));
 
 const Home = props => {
+
+  const [open, setOpen] = React.useState(true)
+    const handleClose =() => {
+      setOpen(false)
+    }
+
   return <div>
     <div className="imgContainer" style={{ color: "darkblue" }}>
       <img src={Image} style={{ width: '100%', height: '90vh' }} />
@@ -17,6 +28,16 @@ const Home = props => {
         <h2>System</h2>
       </div>
     </div>
+    <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left'
+        }}
+        open={open}
+        autoHideDuration={1500}
+        onClose={handleClose}
+        message='Welcome you are logged in!'
+      />
     <Footer />
   </div>
 };

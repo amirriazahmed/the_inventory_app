@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-// import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -10,6 +9,11 @@ import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { withRouter } from "react-router-dom";
+import {
+  
+  Snackbar,
+ 
+} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,6 +42,11 @@ const Header = props => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
+  const [open2, setOpen] = React.useState(false)
+    const handleClose =() => {
+      setOpen(false)
+    };
+
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -52,6 +61,8 @@ const Header = props => {
   };
 
   const handleButtonLogout = pageURL => {
+
+    setOpen(true);
 
     fetch('/auth/logout' )
 
@@ -94,11 +105,7 @@ const Header = props => {
     {
       menuTitle: "update Quantity",
       pageURL: "/updateQTY1"
-  },
-//   {
-//     menuTitle: "Quantity",
-//     pageURL: "/quantity"
-// },
+  },  
 {
     menuTitle: "Delete",
     pageURL: "/deleteproductpage"
@@ -109,9 +116,7 @@ const Header = props => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          {/* <Typography variant="h6" className={classes.title}>
-            Photos
-          </Typography> */}
+         
           {isMobile && loggedInUser ? (
             <>
               <IconButton
@@ -185,13 +190,7 @@ const Header = props => {
                 onClick={() => handleButtonClick("/updateQTY1")}
               >
                 UPDATE QUANTITY
-              </Button>
-              {/* <Button
-                variant="contained"
-                onClick={() => handleButtonClick("/quantity")}
-              >
-                QUANTITY 
-              </Button> */}
+              </Button>              
               <Button
                 variant="contained"
                 onClick={() => handleButtonClick("/deleteproductpage")}
@@ -208,6 +207,18 @@ const Header = props => {
           )}
         </Toolbar>
       </AppBar>
+
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left'
+        }}
+        open={open2}
+        autoHideDuration={1500}
+        onClose={handleClose}
+        message='Bye you are logged out!'
+      />     
+
     </div>
   );
 };

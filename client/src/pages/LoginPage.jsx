@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import {
   Button,
+  Snackbar,
   Grid,
   TextField,
   Paper,
@@ -10,16 +12,25 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  IconButton,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { MailOutlineRounded } from "@material-ui/icons";
+import { set } from "mongoose";
 
 const LoginPage = ({setLoggedInUser}) => {
 
     const [email,setEmail] = useState ("");
     const [password,setPassword] = useState ("");
 
-const loginHandler = () => {
+    const [open, setOpen] = React.useState(false)
+    const handleClose =() => {
+      setOpen(false)
+    }
   
+
+const loginHandler = () => {
+      
     fetch('/auth/login', {
       method: 'POST',
       headers: {
@@ -33,7 +44,10 @@ const loginHandler = () => {
         return response.json()
       }
       else {
-        throw new Error('Login failed!')
+        
+        setOpen(true);
+        throw new Error('Login failed!'); 
+                
       }
     })
     .then((user) => {
@@ -42,8 +56,8 @@ const loginHandler = () => {
     .catch((error) => {
       console.log('Error trying to login: ', error)
     })   
+    
 }
-
 
   return (
     <Grid
@@ -58,7 +72,6 @@ const loginHandler = () => {
         <TextField
           id="email"
           label="Email"
-          
           variant="outlined"
           onChange={(event) => setEmail(event.target.value)}
         />
@@ -76,6 +89,17 @@ const loginHandler = () => {
       <Button variant="contained" color="primary" onClick={loginHandler}>
         Login
       </Button>
+
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left'
+        }}
+        open={open}
+        autoHideDuration={1500}
+        onClose={handleClose}
+        message='Wrong Username password. Please try again!'
+      />
      
     </Grid>
   );

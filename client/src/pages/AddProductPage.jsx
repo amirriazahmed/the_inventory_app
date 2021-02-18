@@ -10,6 +10,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Box,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -71,12 +72,12 @@ const AddProduct = () => {
     <div style={{ margin: 5 }}>
       <Grid
         container
-        direction="column"
+        direction="row"
         justify="space-around"
         spacing={1}
-        alignItems="flex-start"
+        // alignItems="flex-start"
       >
-        <Grid item xs={12}>
+        <Grid item>
           <TextField
             id="CompanyIdInput"
             label="Internal ID"
@@ -127,12 +128,22 @@ const AddProduct = () => {
           />
         </Grid>
 
-        <Button variant="contained" color="primary" onClick={addCollection}>
-          Add Product
-        </Button>
+        <Grid container justify="flex-end">
+          <Box pr={6} py={1}>
+            <Button variant="contained" color="primary" onClick={addCollection}>
+              Add Product
+            </Button>
+          </Box>
+        </Grid>
       </Grid>
 
-      <TableContainer style={{ marginTop: 20 }} component={Paper}>
+      <TableContainer style={{ marginTop: 20 }} component={Paper}
+        style={{
+          width: "auto",
+          margin: "10px",
+          boxShadow: "0 3px 5px 2px rgba(60, 60, 200, .5)",
+        }}
+      >
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
