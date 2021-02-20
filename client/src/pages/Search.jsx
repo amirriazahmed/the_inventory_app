@@ -13,22 +13,36 @@ import {
   Select,
   MenuItem,
   Box,
-  NativeSelect,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import TablePagination from "@material-ui/core/TablePagination";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import * as yup from "yup";
-import { string } from "yup/lib/locale";
+// import { string } from "yup/lib/locale";
+import InputLabel from "@material-ui/core/InputLabel";
+//import MenuItem from '@material-ui/core/MenuItem';
+// import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+//import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles((theme) => ({
   button: {
     display: "block",
+    marginTop: theme.spacing(2),
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    // minWidth: 120,
+    width: 180,
+  },
+  gridItem: {
+    margin: theme.spacing(2),
+    padding: theme.spacing(0.5),
+    maxWidth: 50,
+  },
+  TextField: {
+    width: 50,
   },
 }));
 
@@ -87,35 +101,12 @@ const Search = () => {
       .typeError("Must be a number not letters")
       .integer("Must enter a whole number")
       .moreThan(0, "Must enter whole numbers greater than zero"),
-    //    .required("Must enter a whole number"),
     ProdQuantity: yup
       .number("Must enter a number")
       .typeError("Must be a number not letters")
       .integer("Must enter a whole number")
       .moreThan(0, "Must enter whole numbers greater than zero"),
   });
-  /*  ProdBrand: yup
-      //   .string("must enter a String")
-      .string()
-      .matches(
-        /Smith|Baker Hughes|Schlumberger|Weatherford/,
-        "Must Match one of the following Brands,'Smith','Baker Hughes','Schlumberger' ,'Weatherford' "
-      ),
-    ProdSupplier: yup
-      //   .string("must enter a String")
-      .string()
-      .matches(
-        /Toms shop|Oil Field Express|Oil Tech Supply/,
-        "Must Match one of the following Suppliers,'Toms shop','Oil Field Express','Oil Tech Supply', 'Andrets Shoop"
-      ),
-    ProdCtegory: yup
-      //   .string("must enter a String")
-      .string()
-      .matches(
-        /Bit|Pipe|Plug/,
-        "Must Match one of the following Categories,'Bit','Pipe','Plug'"
-      ),
-  }); */
 
   const handleChange1 = (event) => {
     setLimit(parseInt(event.target.value, 10));
@@ -128,7 +119,6 @@ const Search = () => {
     setDoSearch(true);
   };
 
-  // const performSearch = (internalID,IProdBrand,IProdSupplier,IProdCategory) => {
   const performSearch = (
     prodId,
     prodName,
@@ -205,10 +195,6 @@ const Search = () => {
             prodSupplier,
             prodCategory
           );
-          //  setFieldValue("CompanyIdInput", "");
-          //  setFieldValue("ProdBrand", "");
-          //  setFieldValue("ProdSupplier", "");
-          //  setFieldValue("ProdCategory", "");
         }
         setSubmitting(false);
       }}
@@ -239,11 +225,6 @@ const Search = () => {
           values.ProdCategory === "";
         return (
           <Form onSubmit={handleSubmit}>
-            {/*   {let  CompanyIdInput = "",
-        ProdBrand = "",
-        ProdSupplier = "",
-        ProdCategory = "",
-        ProdQuantity = "",}  */}
 
             <div style={{ margin: 5 }}>
               <Grid
@@ -253,7 +234,7 @@ const Search = () => {
                 spacing={1}
                 alignItems="flex-start"
               >
-                <Grid item>
+                <Grid item xs={2}>
                   <TextField
                     id="CompanyIdInput"
                     label="Internal ID"
@@ -269,7 +250,7 @@ const Search = () => {
                   />
                 </Grid>
 
-                <Grid item>
+                <Grid item xs={2}>
                   <TextField
                     id="Name"
                     label="Item Name"
@@ -278,72 +259,87 @@ const Search = () => {
                   />
                 </Grid>
 
-                <Grid item>
-                  <TextField
+                <Grid item xs={2}>
+                  <FormControl
                     variant="outlined"
-                    id="Brand"
-                    labelId="Brand Name"
-                    select
-                    // labelId="Brand Name"
-                    // variant="outlined"
-                    value={values.ProdBrand}
-                    // onBlur={handleBlur}
-                    onChange={(event) => {
-                      setprodBrand(event.target.value);
-                      handleChange(event);
-                    }}
-                    // error={!!errors.ProdBrand}
-                    // helperText={errors.ProdBrand}
+                    className={classes.formControl}
                   >
-                    {brandList.map((brand) => {
-                      return <MenuItem value={brand}>{brand}</MenuItem>;
-                    })}
-                  </TextField>
+                    <InputLabel id="demo-simple-select-outlined-label">
+                      Brand
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-outlined-label"
+                      id="demo-simple-select-outlined"
+                      value={values.ProdBrand}
+                      onChange={(event) => {
+                        setprodBrand(event.target.value);
+                        handleChange(event);
+                      }}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      {brandList.map((brand) => {
+                        return <MenuItem value={brand}>{brand}</MenuItem>;
+                      })}
+                    </Select>
+                  </FormControl>
                 </Grid>
 
-                {/*  {.selBox{
-                width: 470px ;
-                 height: 40px;
-                }} */}
-                <Grid item>
-                  <Select
-                    id="Supplier"
-                    labelId="Supplier"
-                    //   variant="outlined"
-                    value={values.ProdSupplier}
-                    //    onBlur={handleBlur}
-                    onChange={(event) => {
-                      setprodSupplier(event.target.value);
-                      handleChange(event);
-                    }}
-                    //   error={!!errors.ProdSupplier}
-                    //   helperText={errors.ProdSupplier}
+                <Grid item xs={2}>
+                  <FormControl
+                    variant="outlined"
+                    className={classes.formControl}
                   >
-                    {supplierList.map((supplier) => {
-                      return <MenuItem value={supplier}>{supplier}</MenuItem>;
-                    })}
-                  </Select>
+                    <InputLabel id="demo-simple-select-outlined-label">
+                      Supplier
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-outlined-label"
+                      id="demo-simple-select-outlined"
+                      value={values.ProdSupplier}
+                      onChange={(event) => {
+                        setprodSupplier(event.target.value);
+                        handleChange(event);
+                      }}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      {supplierList.map((supplier) => {
+                        return <MenuItem value={supplier}>{supplier}</MenuItem>;
+                      })}
+                    </Select>
+                  </FormControl>
                 </Grid>
-                <Grid item>
-                  <Select
-                    id="Category"
-                    labelId="Category"
-                    //  variant="outlined"
-                    value={values.ProdCategory}
-                    //   onBlur={handleBlur}
-                    onChange={(event) => {
-                      setprodCategory(event.target.value);
-                      handleChange(event);
-                    }}
-                    //   error={!!errors.ProdCategory}
-                    //  helperText={errors.ProdCategory}
+
+                <Grid item xs={2}>
+                  <FormControl
+                    variant="outlined"
+                    className={classes.formControl}
                   >
-                    {categoryList.map((category) => {
-                      return <MenuItem value={category}>{category}</MenuItem>;
-                    })}
-                  </Select>
+                    <InputLabel id="demo-simple-select-outlined-label">
+                      Category
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-outlined-label"
+                      id="demo-simple-select-outlined"
+                      value={values.ProdCategory}
+                      onChange={(event) => {
+                        setprodCategory(event.target.value);
+                        handleChange(event);
+                      }}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      {categoryList.map((category) => {
+                        return <MenuItem value={category}>{category}</MenuItem>;
+                      })}
+                    </Select>
+                  </FormControl>
                 </Grid>
-                <Grid item>
+                <Grid item xs={2}>
                   <TextField
                     id="Quantity"
                     label="Quantity"

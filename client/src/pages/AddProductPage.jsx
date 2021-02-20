@@ -136,7 +136,7 @@ const AddProduct = () => {
         </Grid>
       </Grid>
 
-      <TableContainer style={{ marginTop: 20 }} component={Paper}
+      <TableContainer component={Paper}
         style={{
           width: "auto",
           margin: "10px",

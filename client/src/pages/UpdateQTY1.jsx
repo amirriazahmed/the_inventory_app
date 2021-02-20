@@ -21,6 +21,9 @@ const useStyles = makeStyles({
     color: "red",
     fontWeight: "bold",
   },
+  button: {
+width: 400,
+  }
 });
 
 const ChangeQuantity = () => {

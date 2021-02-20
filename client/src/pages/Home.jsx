@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import Image from "../img/5.jpg";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import MuiAlert from "@material-ui/lab/Alert";
 import { Snackbar } from "@material-ui/core";
 
@@ -18,7 +18,7 @@ const Home = (props) => {
   return (
     <div>
       <div className="imgContainer" style={{ color: "darkblue" }}>
-        <img src={Image} style={{ width: "100%", height: "90vh" }} />
+        <img alt={"Drill Rig"} src={Image} style={{ width: "100%", height: "90vh" }} />
         <div
           className="appDescription"
           style={{

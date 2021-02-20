@@ -6,18 +6,7 @@ import {
   Snackbar,
   Grid,
   TextField,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  IconButton,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { MailOutlineRounded } from "@material-ui/icons";
-import { set } from "mongoose";
 import Footer from "../components/Footer";
 import Image from "../img/5.jpg";
 
@@ -62,7 +51,7 @@ const LoginPage = ({ setLoggedInUser }) => {
   return (
     <div>
       <div className="imgContainer" style={{ color: "darkblue" }}>
-        <img src={Image} style={{ width: "100%", height: "90vh" }} />
+        <img alt={"Drill Rig"} src={Image} style={{ width: "100%", height: "90vh" }} />
         <div
           className="appDescription"
           style={{
