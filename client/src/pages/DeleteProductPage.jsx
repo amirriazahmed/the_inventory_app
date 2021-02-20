@@ -110,38 +110,48 @@ function DeleteProductPage() {
         >
           Enter Confirm Product
         </Button>
-        <TableContainer style={{ marginTop: 20 }} component={Paper}>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell className={classes.headerCell}>Product ID</TableCell>
-                <TableCell className={classes.headerCell}>
-                  Product Name
-                </TableCell>
-                <TableCell className={classes.headerCell}>Brand</TableCell>
-                <TableCell className={classes.headerCell}>Supplier</TableCell>
-                <TableCell className={classes.headerCell}>Category</TableCell>
-                <TableCell className={classes.headerCell}>
-                  Current Quantity
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell>{toDeleteProduct.id}</TableCell>
-                <TableCell>{toDeleteProduct.item}</TableCell>
-                <TableCell>{toDeleteProduct.brand}</TableCell>
-                <TableCell>{toDeleteProduct.supplier}</TableCell>
-                <TableCell>{toDeleteProduct.category}</TableCell>
-                <TableCell>{toDeleteProduct.quantity}</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <Button variant="contained" color="primary" onClick={bigKahuna}>
-          Delete Item Sure ?
-        </Button>
       </Grid>
+      <TableContainer
+        component={Paper}
+        style={{
+          width: "auto",
+          margin: "10px",
+          boxShadow: "0 3px 5px 2px rgba(60, 60, 200, .5)",
+        }}
+      >
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell className={classes.headerCell}>Product ID</TableCell>
+              <TableCell className={classes.headerCell}>Product Name</TableCell>
+              <TableCell className={classes.headerCell}>Brand</TableCell>
+              <TableCell className={classes.headerCell}>Supplier</TableCell>
+              <TableCell className={classes.headerCell}>Category</TableCell>
+              <TableCell className={classes.headerCell}>
+                Current Quantity
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>{toDeleteProduct.id}</TableCell>
+              <TableCell>{toDeleteProduct.item}</TableCell>
+              <TableCell>{toDeleteProduct.brand}</TableCell>
+              <TableCell>{toDeleteProduct.supplier}</TableCell>
+              <TableCell>{toDeleteProduct.category}</TableCell>
+              <TableCell>{toDeleteProduct.quantity}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        onClick={bigKahuna}
+      >
+        Delete Item Sure ?
+      </Button>
     </div>
   );
 }

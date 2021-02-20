@@ -100,7 +100,6 @@ const LoginPage = ({ setLoggedInUser }) => {
               label="Email"
               variant="outlined"
               color="red"
-
               onChange={(event) => setEmail(event.target.value)}
             />
           </Grid>
@@ -120,7 +119,7 @@ const LoginPage = ({ setLoggedInUser }) => {
           </Grid>
           <Snackbar
             anchorOrigin={{
-              vertical: "center",
+              vertical: "top",
               horizontal: "center",
             }}
             open={open}

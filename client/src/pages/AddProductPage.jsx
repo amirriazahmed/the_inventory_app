@@ -75,9 +75,8 @@ const AddProduct = () => {
         direction="row"
         justify="space-around"
         spacing={1}
-        // alignItems="flex-start"
       >
-        <Grid item>
+        <Grid item xs={2}>
           <TextField
             id="CompanyIdInput"
             label="Internal ID"
@@ -86,7 +85,7 @@ const AddProduct = () => {
           />
         </Grid>
 
-        <Grid item>
+        <Grid item xs={2}>
           <TextField
             id="Name"
             label="Item Name"
@@ -95,7 +94,7 @@ const AddProduct = () => {
           />
         </Grid>
 
-        <Grid item>
+        <Grid item xs={2}>
           <TextField
             id="Brand"
             label="Brand Name"
@@ -103,7 +102,7 @@ const AddProduct = () => {
             onChange={(event) => setprodBrand(event.target.value)}
           />
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
           <TextField
             id="Supplier"
             label="Supplier"
@@ -111,7 +110,7 @@ const AddProduct = () => {
             onChange={(event) => setprodSupplier(event.target.value)}
           />
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
           <TextField
             id="Category"
             label="Category"
@@ -119,7 +118,7 @@ const AddProduct = () => {
             onChange={(event) => setprodCategory(event.target.value)}
           />
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
           <TextField
             id="Quantity"
             label="Quantity"

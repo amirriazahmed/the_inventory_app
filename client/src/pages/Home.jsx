@@ -34,8 +34,22 @@ const Home = (props) => {
           <h2>Inventory Control</h2>
           <h2>System</h2>
         </div>
-
         <Snackbar
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+          open={open}
+          autoHideDuration={2000}
+          onClose={handleClose}
+        >
+          <Alert onClose={handleClose} severity="success">
+            Welcome! You are logged in!
+          </Alert>
+        </Snackbar>
+
+      </div>
+        {/* <Snackbar
           anchorOrigin={{
             vertical: "center",
             horizontal: "center",
@@ -47,8 +61,7 @@ const Home = (props) => {
           <Alert onClose={handleClose} severity="success">
             Welcome! You are logged in!
           </Alert>
-        </Snackbar>
-      </div>
+        </Snackbar> */}
       <Footer />
     </div>
   );

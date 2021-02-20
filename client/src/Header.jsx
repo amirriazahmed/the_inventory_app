@@ -203,7 +203,7 @@ const Header = (props) => {
 
       <Snackbar
         anchorOrigin={{
-          vertical: "center",
+          vertical: "top",
           horizontal: "center",
         }}
         open={open2}

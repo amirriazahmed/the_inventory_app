@@ -102,6 +102,41 @@ router.delete("/delete/:_id", async (req, res, next) => {
   }    
   });
 
+  /*  list all Brands. */
+router.get("/brands", async (req, res, next) => {
+  let data = await Product.find({});
+  let brands = data.map((product) => {
+    return product.brand
+  })
+  let uniqueBrand = [...new Set(brands)].sort();
+  console.info(`Number of Brands:`, uniqueBrand.length);
+  res.send(uniqueBrand);
+});
+
+ /*  list all Suppliers. */
+ router.get("/suppliers", async (req, res, next) => {
+  let data = await Product.find({});
+  let suppliers = data.map((product) => {
+    return product.supplier
+  })
+  let uniqueSupplier = [...new Set(suppliers)].sort();
+  console.info(`Number of Suppliers:`, uniqueSupplier.length);
+  res.send(uniqueSupplier);
+});
+
+/*  list all Categories. */
+router.get("/categories", async (req, res, next) => {
+  let data = await Product.find({});
+  let categories = data.map((product) => {
+    return product.category
+  })
+  let uniqueCategories = [...new Set(categories)].sort();
+  console.info(`Number of Suppliers:`, uniqueCategories.length);
+  res.send(uniqueCategories);
+});
+
+
+
 //delete a record collection 2
 /* router.delete("/delete/:id", async (req, res, next) => {
   let data = await Product.find({ id: reg.body.id });
