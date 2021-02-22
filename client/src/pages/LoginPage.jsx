@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import MuiAlert from "@material-ui/lab/Alert";
 
-import {
-  Button,
-  Snackbar,
-  Grid,
-  TextField,
-} from "@material-ui/core";
+import { Button, Snackbar, Grid, TextField } from "@material-ui/core";
 import Footer from "../components/Footer";
 import Image from "../img/5.jpg";
 
@@ -51,14 +46,18 @@ const LoginPage = ({ setLoggedInUser }) => {
   return (
     <div>
       <div className="imgContainer" style={{ color: "darkblue" }}>
-        <img alt={"Drill Rig"} src={Image} style={{ width: "100%", height: "90vh" }} />
+        <img
+          alt={"Drill Rig"}
+          src={Image}
+          style={{ width: "100%", height: "90vh" }}
+        />
         <div
           className="appDescription"
           style={{
             position: "absolute",
             top: "10%",
             left: "10%",
-            fontSize: 44,
+            fontSize: 40,
             textAlign: "center",
             fontFamily: "Impact",
           }}

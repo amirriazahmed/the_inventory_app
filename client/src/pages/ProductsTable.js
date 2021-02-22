@@ -10,14 +10,15 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import TablePagination from "@material-ui/core/TablePagination";
+import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = makeStyles({
   root: {
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    fontSize: 22,
   },
   headerCell: {
     color: "blue",
-    // fontWeight: "bold",
     fontSize: 22,
   },
 });
@@ -36,7 +37,7 @@ const ProductsTable = () => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  
+
   useEffect(() => {
     const getInventoryItems = async () => {
       // fetch uses the "proxy" value set in client/package.json
@@ -67,25 +68,25 @@ const ProductsTable = () => {
             <TableCell className={classes.headerCell}>Quantity</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody fontSize={"25"}>
           {rows
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((row, index) => (
-            <TableRow
-              style={
-                index % 2
-                  ? { background: "hsl(0, 0%, 90%" }
-                  : { background: "hsl(0, 100%, 100%)" }
-              }
-            >
-              <TableCell>{row.id}</TableCell>
-              <TableCell>{row.item}</TableCell>
-              <TableCell>{row.brand}</TableCell>
-              <TableCell>{row.supplier}</TableCell>
-              <TableCell>{row.category}</TableCell>
-              <TableCell>{row.quantity}</TableCell>
-            </TableRow>
-          ))}
+              <TableRow
+                style={
+                  index % 2
+                    ? { background: "hsl(0, 0%, 90%" }
+                    : { background: "hsl(0, 100%, 100%)" }
+                }
+              >
+                <TableCell>{row.id}</TableCell>
+                <TableCell>{row.item}</TableCell>
+                <TableCell>{row.brand}</TableCell>
+                <TableCell>{row.supplier}</TableCell>
+                <TableCell>{row.category}</TableCell>
+                <TableCell>{row.quantity}</TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
       <TablePagination

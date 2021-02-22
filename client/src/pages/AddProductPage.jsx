@@ -13,6 +13,7 @@ import {
   Box,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = makeStyles({
   headerCell: {
@@ -84,7 +85,8 @@ const AddProduct = () => {
     <div style={{ margin: 30 }}>
       <Grid container direction="row" justify="space-around" spacing={1}>
         <Grid item xs={2}>
-        <TextField className={classes.textField}
+          <TextField
+            className={classes.textField}
             id="CompanyIdInput"
             label="Internal ID"
             variant="outlined"
@@ -93,7 +95,8 @@ const AddProduct = () => {
         </Grid>
 
         <Grid item xs={2}>
-        <TextField className={classes.textField}
+          <TextField
+            className={classes.textField}
             id="Name"
             label="Item Name"
             variant="outlined"
@@ -102,7 +105,8 @@ const AddProduct = () => {
         </Grid>
 
         <Grid item xs={2}>
-        <TextField className={classes.textField}
+          <TextField
+            className={classes.textField}
             id="Brand"
             label="Brand Name"
             variant="outlined"
@@ -110,7 +114,8 @@ const AddProduct = () => {
           />
         </Grid>
         <Grid item xs={2}>
-        <TextField className={classes.textField}
+          <TextField
+            className={classes.textField}
             id="Supplier"
             label="Supplier"
             variant="outlined"
@@ -118,7 +123,8 @@ const AddProduct = () => {
           />
         </Grid>
         <Grid item xs={2}>
-        <TextField className={classes.textField}
+          <TextField
+            className={classes.textField}
             id="Category"
             label="Category"
             variant="outlined"
@@ -126,7 +132,8 @@ const AddProduct = () => {
           />
         </Grid>
         <Grid item xs={2}>
-        <TextField className={classes.textField}
+          <TextField
+            className={classes.textField}
             id="Quantity"
             label="Quantity"
             variant="outlined"
@@ -136,10 +143,12 @@ const AddProduct = () => {
 
         <Grid container justify="flex-end">
           <Box pr={6} py={1}>
-
-          <Button className={classes.button}            variant="contained" 
-            color="primary" 
-            onClick={addCollection}>
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              onClick={addCollection}
+            >
               Add Product
             </Button>
           </Box>

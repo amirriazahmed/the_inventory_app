@@ -15,7 +15,6 @@ import {
   Box,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
 import TablePagination from "@material-ui/core/TablePagination";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
@@ -249,7 +248,6 @@ const Search = () => {
                     id="CompanyIdInput"
                     label="Internal ID"
                     variant="outlined"
-                    InputLabelProps={{ style: { fontWeight: 600 } }}
                     value={values.CompanyIdInput}
                     onBlur={handleBlur}
                     onChange={(event) => {
@@ -267,7 +265,6 @@ const Search = () => {
                     id="Name"
                     label="Item Name"
                     variant="outlined"
-                    inputLabelProps={{ style: { fontWeight: 600 } }}
                     onChange={(event) => setprodName(event.target.value)}
                   />
                 </Grid>
@@ -275,7 +272,6 @@ const Search = () => {
                 <Grid item xs={2}>
                   <FormControl
                     variant="outlined"
-                    inputLabelProps={{ style: { fontWeight: 600 } }}
                     className={classes.formControl}
                   >
                     <InputLabel id="demo-simple-select-outlined-label">
@@ -303,7 +299,6 @@ const Search = () => {
                 <Grid item xs={2}>
                   <FormControl
                     variant="outlined"
-                    inputLabelProps={{ style: { fontWeight: 600 } }}
                     className={classes.formControl}
                   >
                     <InputLabel id="demo-simple-select-outlined-label">
@@ -331,7 +326,6 @@ const Search = () => {
                 <Grid item xs={2}>
                   <FormControl
                     variant="outlined"
-                    inputLabelProps={{ style: { fontWeight: 600 } }}
                     className={classes.formControl}
                   >
                     <InputLabel id="demo-simple-select-outlined-label">
@@ -362,7 +356,6 @@ const Search = () => {
                     id="Quantity"
                     label="Quantity"
                     variant="outlined"
-                    inputLabelProps={{ style: { fontWeight: 600 } }}
                     onChange={(event) => setprodQuantity(event.target.value)}
                   />
                 </Grid>

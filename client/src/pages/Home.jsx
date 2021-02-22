@@ -18,14 +18,18 @@ const Home = (props) => {
   return (
     <div>
       <div className="imgContainer" style={{ color: "darkblue" }}>
-        <img alt={"Drill Rig"} src={Image} style={{ width: "100%", height: "90vh" }} />
+        <img
+          alt={"Drill Rig"}
+          src={Image}
+          style={{ width: "100%", height: "90vh" }}
+        />
         <div
           className="appDescription"
           style={{
             position: "absolute",
             top: "10%",
             left: "10%",
-            fontSize: 44,
+            fontSize: 40,
             textAlign: "center",
             fontFamily: "Impact",
           }}
@@ -47,9 +51,8 @@ const Home = (props) => {
             Welcome! You are logged in!
           </Alert>
         </Snackbar>
-
       </div>
-        {/* <Snackbar
+      {/* <Snackbar
           anchorOrigin={{
             vertical: "center",
             horizontal: "center",
