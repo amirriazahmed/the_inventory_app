@@ -16,7 +16,18 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   headerCell: {
     color: "red",
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontSize: 22,
+  },
+  button: {
+    maxWidth: 228,
+    minWidth: 228,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  textField: {
+    backgroundColor: "FloralWhite",
+    transition: "none",
   },
 });
 
@@ -86,7 +97,7 @@ function DeleteProductPage() {
   };
 
   return (
-    <div style={{ margin: 5 }}>
+    <div style={{ margin: 40 }}>
       <Grid
         container
         direction="column"
@@ -96,6 +107,7 @@ function DeleteProductPage() {
       >
         <Grid item xs={12}>
           <TextField
+            className={classes.textField}
             id="CompanyIdInput"
             label="Internal ID"
             variant="outlined"
@@ -104,11 +116,12 @@ function DeleteProductPage() {
           />
         </Grid>
         <Button
+          className={classes.button}
           variant="contained"
           color="primary"
           onClick={performSearchForDelete}
         >
-          Enter Confirm Product
+          Confirm Product ID
         </Button>
       </Grid>
       <TableContainer
@@ -145,12 +158,13 @@ function DeleteProductPage() {
         </Table>
       </TableContainer>
       <Button
+        className={classes.button}
         variant="contained"
         color="primary"
-        size="large"
         onClick={bigKahuna}
+        size={"large"}
       >
-        Delete Item Sure ?
+        Delete Item?
       </Button>
     </div>
   );

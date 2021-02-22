@@ -28,21 +28,31 @@ import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    display: "block",
-    marginTop: theme.spacing(2),
+    maxWidth: 140,
+    minWidth: 140,
   },
   formControl: {
-    margin: theme.spacing(1),
-    // minWidth: 120,
-    width: 180,
+    // margin: theme.spacing(1),
+    // maxWidth: 180,
+    // minWidth: 180,
+    width: "100%",
+    flexBasis: 0,
+    backgroundColor: "BlanchedAlmond",
   },
   gridItem: {
-    margin: theme.spacing(2),
-    padding: theme.spacing(0.5),
-    maxWidth: 50,
+    // margin: theme.spacing(2),
+    // padding: theme.spacing(0.5),
+    maxWidth: 180,
+    minWidth: 180,
   },
-  TextField: {
-    width: 50,
+  headerCell: {
+    color: "red",
+    // fontWeight: "bold",
+    fontSize: 22,
+  },
+  textField: {
+    backgroundColor: "FloralWhite",
+    width: "100%",
   },
 }));
 
@@ -225,20 +235,21 @@ const Search = () => {
           values.ProdCategory === "";
         return (
           <Form onSubmit={handleSubmit}>
-
-            <div style={{ margin: 5 }}>
+            <div style={{ margin: 30 }}>
               <Grid
                 container
                 direction="row"
                 justify="space-around"
                 spacing={1}
-                alignItems="flex-start"
+                margin={5}
               >
                 <Grid item xs={2}>
                   <TextField
+                    className={classes.textField}
                     id="CompanyIdInput"
                     label="Internal ID"
                     variant="outlined"
+                    InputLabelProps={{ style: { fontWeight: 600 } }}
                     value={values.CompanyIdInput}
                     onBlur={handleBlur}
                     onChange={(event) => {
@@ -252,9 +263,11 @@ const Search = () => {
 
                 <Grid item xs={2}>
                   <TextField
+                    className={classes.textField}
                     id="Name"
                     label="Item Name"
                     variant="outlined"
+                    inputLabelProps={{ style: { fontWeight: 600 } }}
                     onChange={(event) => setprodName(event.target.value)}
                   />
                 </Grid>
@@ -262,6 +275,7 @@ const Search = () => {
                 <Grid item xs={2}>
                   <FormControl
                     variant="outlined"
+                    inputLabelProps={{ style: { fontWeight: 600 } }}
                     className={classes.formControl}
                   >
                     <InputLabel id="demo-simple-select-outlined-label">
@@ -289,6 +303,7 @@ const Search = () => {
                 <Grid item xs={2}>
                   <FormControl
                     variant="outlined"
+                    inputLabelProps={{ style: { fontWeight: 600 } }}
                     className={classes.formControl}
                   >
                     <InputLabel id="demo-simple-select-outlined-label">
@@ -316,6 +331,7 @@ const Search = () => {
                 <Grid item xs={2}>
                   <FormControl
                     variant="outlined"
+                    inputLabelProps={{ style: { fontWeight: 600 } }}
                     className={classes.formControl}
                   >
                     <InputLabel id="demo-simple-select-outlined-label">
@@ -339,11 +355,14 @@ const Search = () => {
                     </Select>
                   </FormControl>
                 </Grid>
+
                 <Grid item xs={2}>
                   <TextField
+                    className={classes.textField}
                     id="Quantity"
                     label="Quantity"
                     variant="outlined"
+                    inputLabelProps={{ style: { fontWeight: 600 } }}
                     onChange={(event) => setprodQuantity(event.target.value)}
                   />
                 </Grid>
@@ -351,10 +370,9 @@ const Search = () => {
                 <Grid container justify="flex-end">
                   <Box pr={6} py={1}>
                     <Button
-                      type="button"
+                      className={classes.button}
                       variant="contained"
                       color="primary"
-                      // onClick={performSearch}
                       onClick={(e) => {
                         setButtonPressed("search");
                         handleSubmit(e);
@@ -385,29 +403,29 @@ const Search = () => {
                   width: "auto",
                   margin: "10px",
                   boxShadow: "0 3px 5px 2px rgba(60, 60, 200, .5)",
-                  marginTop: 20,
+                  // marginTop: 20,
                 }}
               >
                 <Table aria-label="simple table">
                   <TableHead>
                     <TableRow>
                       <TableCell className={classes.headerCell}>
-                        <h4>Product ID</h4>
+                        Product ID
                       </TableCell>
                       <TableCell className={classes.headerCell}>
-                        <h4>Product Name</h4>
+                        Product Name
                       </TableCell>
                       <TableCell className={classes.headerCell}>
-                        <h4>Brand</h4>
+                        Brand
                       </TableCell>
                       <TableCell className={classes.headerCell}>
-                        <h4>Supplier</h4>
+                        Supplier
                       </TableCell>
                       <TableCell className={classes.headerCell}>
-                        <h4>Category</h4>
+                        Category
                       </TableCell>
                       <TableCell className={classes.headerCell}>
-                        <h4>Quantity</h4>
+                        Quantity
                       </TableCell>
                     </TableRow>
                   </TableHead>

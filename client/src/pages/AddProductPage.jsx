@@ -17,7 +17,19 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   headerCell: {
     color: "red",
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontSize: 22,
+  },
+  button: {
+    maxWidth: 140,
+    minWidth: 140,
+  },
+  textField: {
+    backgroundColor: "FloralWhite",
+    color: "FloralWhite",
+    // minWidth: "100%",
+    // maxWidth: "100%",
+    width: "100%",
   },
 });
 
@@ -69,15 +81,10 @@ const AddProduct = () => {
   };
 
   return (
-    <div style={{ margin: 5 }}>
-      <Grid
-        container
-        direction="row"
-        justify="space-around"
-        spacing={1}
-      >
+    <div style={{ margin: 30 }}>
+      <Grid container direction="row" justify="space-around" spacing={1}>
         <Grid item xs={2}>
-          <TextField
+        <TextField className={classes.textField}
             id="CompanyIdInput"
             label="Internal ID"
             variant="outlined"
@@ -86,7 +93,7 @@ const AddProduct = () => {
         </Grid>
 
         <Grid item xs={2}>
-          <TextField
+        <TextField className={classes.textField}
             id="Name"
             label="Item Name"
             variant="outlined"
@@ -95,7 +102,7 @@ const AddProduct = () => {
         </Grid>
 
         <Grid item xs={2}>
-          <TextField
+        <TextField className={classes.textField}
             id="Brand"
             label="Brand Name"
             variant="outlined"
@@ -103,7 +110,7 @@ const AddProduct = () => {
           />
         </Grid>
         <Grid item xs={2}>
-          <TextField
+        <TextField className={classes.textField}
             id="Supplier"
             label="Supplier"
             variant="outlined"
@@ -111,7 +118,7 @@ const AddProduct = () => {
           />
         </Grid>
         <Grid item xs={2}>
-          <TextField
+        <TextField className={classes.textField}
             id="Category"
             label="Category"
             variant="outlined"
@@ -119,7 +126,7 @@ const AddProduct = () => {
           />
         </Grid>
         <Grid item xs={2}>
-          <TextField
+        <TextField className={classes.textField}
             id="Quantity"
             label="Quantity"
             variant="outlined"
@@ -129,14 +136,18 @@ const AddProduct = () => {
 
         <Grid container justify="flex-end">
           <Box pr={6} py={1}>
-            <Button variant="contained" color="primary" onClick={addCollection}>
+
+          <Button className={classes.button}            variant="contained" 
+            color="primary" 
+            onClick={addCollection}>
               Add Product
             </Button>
           </Box>
         </Grid>
       </Grid>
 
-      <TableContainer component={Paper}
+      <TableContainer
+        component={Paper}
         style={{
           width: "auto",
           margin: "10px",

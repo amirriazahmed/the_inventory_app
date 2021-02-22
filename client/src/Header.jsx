@@ -101,7 +101,7 @@ const Header = (props) => {
       pageURL: "/add",
     },
     {
-      menuTitle: "update Quantity",
+      menuTitle: "Update Quantity",
       pageURL: "/updateQTY1",
     },
     {

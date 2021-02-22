@@ -17,7 +17,8 @@ const useStyles = makeStyles({
   },
   headerCell: {
     color: "blue",
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontSize: 22,
   },
 });
 

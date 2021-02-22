@@ -19,11 +19,19 @@ import * as yup from "yup";
 const useStyles = makeStyles({
   headerCell: {
     color: "red",
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontSize: 22,
   },
   button: {
-width: 400,
-  }
+    maxWidth: 228,
+    minWidth: 228,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  textField: {
+    backgroundColor: "FloralWhite",
+    color: "FloralWhite",
+  },
 });
 
 const ChangeQuantity = () => {
@@ -45,18 +53,18 @@ const ChangeQuantity = () => {
 
   const validationQuantitySchema = yup.object({
     CompanyIdInput: yup
-      .number("must enter a number")
+      .number("Must enter a number")
       .typeError("Must be a number not letters")
       .integer("Must enter a whole number")
       .moreThan(0, "Must enter whole numbers greater than zero")
       .required("Must enter a whole number"),
     Receiving: yup
-      .number("must enter a number")
+      .number("Must enter a number")
       .typeError("Must be a number not letters")
       .integer("Must enter a whole number")
       .moreThan(0, "Must enter whole numbers greater than zero"),
     Issuing: yup
-      .number("must enter a number")
+      .number("Must enter a number")
       .typeError("Must be a number not letters")
       .integer("Must enter a whole number")
       .moreThan(0, "Must enter whole numbers greater than zero")
@@ -154,8 +162,9 @@ const ChangeQuantity = () => {
         errors,
       }) => (
         <Form onSubmit={handleSubmit}>
-          <div style={{ margin: 5 }}>
+          <div>
             <center>
+              <div>
               <h1> Make your selection for Quantity update</h1>
               {options.map((select) => (
                 <>
@@ -165,11 +174,13 @@ const ChangeQuantity = () => {
                     name="radiovalues"
                     onChange={(e) => setSelectedOption(e.target.value)}
                   />
-                  <b style={{ color: "blue" }}> {select}</b>
+                  <b style={{ color: "blue", fontSize: 18 }}> {select}</b>
                 </>
               ))}
-
+              </div>
+              <div style={{ height:40, margin: 10}}>
               <h2 style={{ color: "green" }}>{selectedOption}</h2>
+              </div>
             </center>
 
             <Grid
@@ -177,10 +188,9 @@ const ChangeQuantity = () => {
               direction="column"
               justify="space-around"
               spacing={1}
-              alignItems="flex-start"
             >
-              <Grid item xs={12}>
-                <TextField
+              <Grid item>
+                <TextField className={classes.textField}
                   id="CompanyIdInput"
                   label="Internal ID"
                   variant="outlined"
@@ -194,6 +204,7 @@ const ChangeQuantity = () => {
                 />
               </Grid>
               <Button
+                className={classes.button}
                 variant="contained"
                 color="primary"
                 onClick={(e) => {
@@ -203,10 +214,17 @@ const ChangeQuantity = () => {
                 }}
                 disabled={errors.CompanyIdInput || values.CompanyIdInput === ""}
               >
-                Enter Confirm Product
+                Confirm Product ID
               </Button>
 
-              <TableContainer style={{ marginTop: 20 }} component={Paper}>
+              <TableContainer
+                component={Paper}
+                style={{
+                  width: "auto",
+                  margin: "10px",
+                  boxShadow: "0 3px 5px 2px rgba(60, 60, 200, .5)",
+                }}
+              >
                 <Table aria-label="simple table">
                   <TableHead>
                     <TableRow>
@@ -243,81 +261,71 @@ const ChangeQuantity = () => {
                 </Table>
               </TableContainer>
               {isReceiving ? (
-                <div>
-                  <br></br>
-                  <center>
-                    <Grid item>
-                      <TextField
-                        id="Receiving"
-                        label="Receiving"
-                        variant="outlined"
-                        color="primary"
-                        value={values.Receiving}
-                        onBlur={handleBlur}
-                        onChange={(event) => {
-                          handleChange(event);
-                        }}
-                        error={!!errors.Receiving}
-                        helperText={errors.Receiving}
-                      />
-                      <br></br>
-                      <br></br>
-                    </Grid>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={(e) => {
-                        setButtonPressed("updateValueQty");
-                        handleSubmit(e);
+                <>
+                  <Grid item>
+                    <TextField className={classes.textField}
+                      id="Receiving"
+                      label="Receiving"
+                      variant="outlined"
+                      value={values.Receiving}
+                      onBlur={handleBlur}
+                      onChange={(event) => {
+                        handleChange(event);
                       }}
-                      disabled={
-                        errors.Receiving ||
-                        errors.Issuing ||
-                        (values.Receiving === "" && values.Issuing === "")
-                      }
-                    >
-                      Update Quantity
-                    </Button>
-                  </center>
-                </div>
+                      error={!!errors.Receiving}
+                      helperText={errors.Receiving}
+                    />
+                  </Grid>
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                    onClick={(e) => {
+                      setButtonPressed("updateValueQty");
+                      handleSubmit(e);
+                    }}
+                    disabled={
+                      errors.Receiving ||
+                      errors.Issuing ||
+                      (values.Receiving === "" && values.Issuing === "")
+                    }
+                  >
+                    Update Quantity
+                  </Button>
+                </>
               ) : (
-                <div>
-                  <br></br>
-                  <center>
-                    <Grid item>
-                      <TextField
-                        id="Issuing"
-                        label="Issuing"
-                        variant="outlined"
-                        color="primary"
-                        value={values.Issuing}
-                        onBlur={handleBlur}
-                        onChange={(event) => {
-                          handleChange(event);
-                        }}
-                        error={!!errors.Issuing}
-                        helperText={errors.Issuing}
-                      />
-                      <br></br>
-                      <br></br>
-                    </Grid>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={(e) => {
-                        setButtonPressed("updateValueQty");
-                        handleSubmit(e);
+                <>
+                  <Grid item>
+                    <TextField className={classes.textField}
+                      id="Issuing"
+                      label="Issuing"
+                      variant="outlined"
+                      value={values.Issuing}
+                      onBlur={handleBlur}
+                      onChange={(event) => {
+                        handleChange(event);
                       }}
-                      disabled={
-                        errors.Receiving ||
-                        errors.Issuing ||
-                        (values.Receiving === "" && values.Issuing === "")
-                      }
-                    >
-                      Update Quantity
-                    </Button>
-                  </center>
-                </div>
+                      error={!!errors.Issuing}
+                      helperText={errors.Issuing}
+                    />
+                  </Grid>
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                    onClick={(e) => {
+                      setButtonPressed("updateValueQty");
+                      handleSubmit(e);
+                    }}
+                    disabled={
+                      errors.Receiving ||
+                      errors.Issuing ||
+                      (values.Receiving === "" && values.Issuing === "")
+                    }
+                  >
+                    Update Quantity
+                  </Button>
+                </>
               )}
             </Grid>
           </div>
