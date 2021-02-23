@@ -52,7 +52,10 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     backgroundColor: "FloralWhite",
     width: "100%",
-  },
+  }, 
+  headerCell2: {    
+    fontSize: 16,
+  }, 
 }));
 
 const Search = () => {
@@ -425,12 +428,12 @@ const Search = () => {
                   <TableBody>
                     {searchData.map((row) => (
                       <TableRow>
-                        <TableCell>{row.id}</TableCell>
-                        <TableCell>{row.item}</TableCell>
-                        <TableCell>{row.brand}</TableCell>
-                        <TableCell>{row.supplier}</TableCell>
-                        <TableCell>{row.category}</TableCell>
-                        <TableCell>{row.quantity}</TableCell>
+                        <TableCell className={classes.headerCell2} >{row.id}</TableCell>
+                        <TableCell className={classes.headerCell2}>{row.item}</TableCell>
+                        <TableCell className={classes.headerCell2}>{row.brand}</TableCell>
+                        <TableCell className={classes.headerCell2}>{row.supplier}</TableCell>
+                        <TableCell className={classes.headerCell2}>{row.category}</TableCell>
+                        <TableCell className={classes.headerCell2}>{row.quantity}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

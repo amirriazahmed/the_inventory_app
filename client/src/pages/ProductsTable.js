@@ -21,6 +21,9 @@ const useStyles = makeStyles({
     color: "blue",
     fontSize: 22,
   },
+  headerCell2: {    
+    fontSize: 16,
+  },
 });
 
 const ProductsTable = () => {
@@ -79,12 +82,12 @@ const ProductsTable = () => {
                     : { background: "hsl(0, 100%, 100%)" }
                 }
               >
-                <TableCell>{row.id}</TableCell>
-                <TableCell>{row.item}</TableCell>
-                <TableCell>{row.brand}</TableCell>
-                <TableCell>{row.supplier}</TableCell>
-                <TableCell>{row.category}</TableCell>
-                <TableCell>{row.quantity}</TableCell>
+                <TableCell className={classes.headerCell2}>{row.id}</TableCell>
+                <TableCell className={classes.headerCell2}>{row.item}</TableCell>
+                <TableCell className={classes.headerCell2}>{row.brand}</TableCell>
+                <TableCell className={classes.headerCell2}>{row.supplier}</TableCell>
+                <TableCell className={classes.headerCell2}>{row.category}</TableCell>
+                <TableCell className={classes.headerCell2}>{row.quantity}</TableCell>
               </TableRow>
             ))}
         </TableBody>

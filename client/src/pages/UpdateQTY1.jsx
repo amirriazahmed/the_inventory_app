@@ -20,18 +20,22 @@ const useStyles = makeStyles({
   headerCell: {
     color: "red",
     // fontWeight: "bold",
-    fontSize: 22,
+    fontSize: 21,
   },
   button: {
     maxWidth: 228,
     minWidth: 228,
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: 15,
+    marginBottom: 15,
   },
   textField: {
     backgroundColor: "FloralWhite",
     color: "FloralWhite",
   },
+  headerCell2: {    
+    fontSize: 16,
+  }, 
+
 });
 
 const ChangeQuantity = () => {
@@ -250,12 +254,12 @@ const ChangeQuantity = () => {
                   </TableHead>
                   <TableBody>
                     <TableRow>
-                      <TableCell>{currentProduct.id}</TableCell>
-                      <TableCell>{currentProduct.item}</TableCell>
-                      <TableCell>{currentProduct.brand}</TableCell>
-                      <TableCell>{currentProduct.supplier}</TableCell>
-                      <TableCell>{currentProduct.category}</TableCell>
-                      <TableCell>{currentProduct.quantity}</TableCell>
+                      <TableCell className={classes.headerCell2}  >{currentProduct.id}</TableCell>
+                      <TableCell className={classes.headerCell2}>{currentProduct.item}</TableCell>
+                      <TableCell className={classes.headerCell2}>{currentProduct.brand}</TableCell>
+                      <TableCell className={classes.headerCell2}>{currentProduct.supplier}</TableCell>
+                      <TableCell className={classes.headerCell2}>{currentProduct.category}</TableCell>
+                      <TableCell className={classes.headerCell2}>{currentProduct.quantity}</TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>

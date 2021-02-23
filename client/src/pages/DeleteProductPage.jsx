@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   headerCell: {
     color: "red",
     // fontWeight: "bold",
-    fontSize: 22,
+    fontSize: 20,
   },
   button: {
     maxWidth: 228,
@@ -29,6 +29,9 @@ const useStyles = makeStyles({
   textField: {
     backgroundColor: "FloralWhite",
     transition: "none",
+  },
+  headerCell2: {    
+    fontSize: 16,
   },
 });
 
@@ -148,12 +151,12 @@ function DeleteProductPage() {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>{toDeleteProduct.id}</TableCell>
-              <TableCell>{toDeleteProduct.item}</TableCell>
-              <TableCell>{toDeleteProduct.brand}</TableCell>
-              <TableCell>{toDeleteProduct.supplier}</TableCell>
-              <TableCell>{toDeleteProduct.category}</TableCell>
-              <TableCell>{toDeleteProduct.quantity}</TableCell>
+              <TableCell className={classes.headerCell2}>{toDeleteProduct.id}</TableCell>
+              <TableCell className={classes.headerCell2}>{toDeleteProduct.item}</TableCell>
+              <TableCell className={classes.headerCell2}>{toDeleteProduct.brand}</TableCell>
+              <TableCell className={classes.headerCell2}>{toDeleteProduct.supplier}</TableCell>
+              <TableCell className={classes.headerCell2}>{toDeleteProduct.category}</TableCell>
+              <TableCell className={classes.headerCell2}>{toDeleteProduct.quantity}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

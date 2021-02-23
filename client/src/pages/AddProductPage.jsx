@@ -32,6 +32,9 @@ const useStyles = makeStyles({
     // maxWidth: "100%",
     width: "100%",
   },
+  headerCell2: {    
+    fontSize: 16,
+  },
 });
 
 const AddProduct = () => {
@@ -176,12 +179,12 @@ const AddProduct = () => {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>{productAdded.id}</TableCell>
-              <TableCell>{productAdded.item}</TableCell>
-              <TableCell>{productAdded.brand}</TableCell>
-              <TableCell>{productAdded.supplier}</TableCell>
-              <TableCell>{productAdded.category}</TableCell>
-              <TableCell>{productAdded.quantity}</TableCell>
+              <TableCell className={classes.headerCell2}>{productAdded.id}</TableCell>
+              <TableCell className={classes.headerCell2}>{productAdded.item}</TableCell>
+              <TableCell className={classes.headerCell2}>{productAdded.brand}</TableCell>
+              <TableCell className={classes.headerCell2}>{productAdded.supplier}</TableCell>
+              <TableCell className={classes.headerCell2}>{productAdded.category}</TableCell>
+              <TableCell className={classes.headerCell2}>{productAdded.quantity}</TableCell>
             </TableRow>
           </TableBody>
         </Table>
